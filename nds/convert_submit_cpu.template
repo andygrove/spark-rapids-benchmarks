@@ -14,12 +14,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-export SPARK_HOME=YOUR_SPARK_HOME
-export SPARK_CONF=("--master" "yarn"
-                   "--deploy-mode" "cluster"
+#export SPARK_HOME=YOUR_SPARK_HOME
+export SPARK_CONF=("--master" "spark://ripper:7077"
                    "--driver-memory" "10G"
-                   "--num-executors" "8"
-                   "--executor-memory" "40G"
+                   "--num-executors" "1"
+                   "--executor-memory" "32G"
                    "--executor-cores" "12"
                    "--conf" "spark.task.cpus=1")
 

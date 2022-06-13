@@ -88,7 +88,7 @@ The utility requires a pre-defined [template file](./convert_submit_gpu.template
 necessary Spark configurations. Either user can submit the `nds_transcode.py` directly to spark with
 arbitary Spark parameters.
 
-Parquet and Orc are supported for output data foramt at present.
+Parquet, Orc, Avro, and JSON are supported for output data foramt at present.
 
 User can also specify `--tables` to convert specific table or tables. See argument details below.
 
@@ -113,7 +113,7 @@ optional arguments:
   -h, --help            show this help message and exit
   --output_mode {overwrite,append,ignore,error,errorifexists,default}
                         save modes as defined by https://spark.apache.org/docs/latest/sql-data-sources-load-save-functions.html#save-modesdefault value is errorifexists, which is the Spark default behavior
-  --output_format {parquet,orc}
+  --output_format {parquet,orc,avro,json}
                         output data format when converting CSV data sources. Now supports parquet, orc.
   --tables TABLES       specify table names by a comma seprated string. e.g. 'catalog_page,catalog_sales'.
   --input_suffix INPUT_SUFFIX
@@ -136,7 +136,7 @@ User can also use `spark-submit` to submit `nds_transcode.py` directly.
 We provide two basic templates for GPU run(convert_submit_gpu.template) and CPU run(convert_submit_cpu.template).
 To enable GPU run, user need to download two jars in advance to use spark-rapids plugin.
 
-- cuDF jar: https://repo1.maven.org/maven2/ai/rapids/cudf/22.02.0/cudf-22.02.0.jar
+- cuDF jar: `https://repo1.maven.org/maven2/ai/rapids/cudf/22.02.0/cudf-22.02.0.jar`
 - spark-rapids jar: https://repo1.maven.org/maven2/com/nvidia/rapids-4-spark_2.12/22.02.0/rapids-4-spark_2.12-22.02.0.jar
 
 After that, please set environment variable `CUDF_JAR` and `SPARK_RAPIDS_PLUGIN_JAR` to the path where
