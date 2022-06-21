@@ -84,7 +84,7 @@ def setup_tables(spark_session, input_prefix, execution_time_list):
     for table_name in get_schemas(False).keys():
         start = int(time.time() * 1000)
         table_path = input_prefix + '/' + table_name
-        spark_session.read.parquet(
+        spark_session.read.json(
             table_path).createOrReplaceTempView(table_name)
         end = int(time.time() * 1000)
         print("====== Creating TempView for table {} ======".format(table_name))
