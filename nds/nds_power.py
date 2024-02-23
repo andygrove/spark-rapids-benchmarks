@@ -129,6 +129,7 @@ def run_one_query(spark_session,
     df = spark_session.sql(query)
     if not output_path:
         df.collect()
+        df.explain(True)
     else:
         ensure_valid_column_names(df).write.format(output_format).mode('overwrite').save(
                 output_path + '/' + query_name)
